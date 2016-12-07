@@ -28,7 +28,7 @@ public class Example {
     private UserRepository userRepository; 
 	@Autowired  
     DemoService demoService; 
-	
+	//测试提交是否成功
 	// 从 application.properties 中读取配置，如取不到默认值为Hello Shanhy
     @Value("${application.hello:Hello Angel}")
     private String hello;
