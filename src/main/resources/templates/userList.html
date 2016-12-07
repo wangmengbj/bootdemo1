@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title sec:authentication="name"></title> 
+    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <style type="text/css">
+    	span {
+		display:block;
+		float:left;
+    	width:150px;}
+    </style>
+</head>
+<body>
+<form id="list" name="list" th:action="@{/search}">
+<input id="pageStr" name="pageStr" type="hidden" value=""/>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title">列表</h3>
+	</div>
+	<div class="panel-body" >
+	<a th:href="@{/addUser}">添加</a><input id="search" name="search"/><a href="javascript:search()">查询</a>
+		<ul class="list-group">
+			<li class="list-group-item" th:each="user:${list}">
+			    <span th:text="${user.name}"></span>
+				<span th:text="${user.age}"></span>
+				<span th:text="${user.address}"></span>
+				<span th:text="${user.password}"></span>
+				<a th:href="@{/delUser(id=${user.id})}" onclick="" sec:authorize="hasRole('ROLE_ADMIN')">删除</a>
+				<a th:href="@{/editUser(id=${user.id})}" onclick="">编辑</a>
+			</li>
+		</ul>
+		<ul class="pagination">
+		  <li><a href="#">&laquo;</a></li>
+		  <li><a th:href="@{/userList(page=1)}">1</a></li>
+		  <li><a th:href="@{/userList(page=2)}">2</a></li>
+		  <li><a th:href="@{/userList(page=3)}">3</a></li>
+		  <li><a th:href="@{/userList(page=4)}">4</a></li>
+		  <li><a th:href="@{/userList(page=5)}">5</a></li>
+		  <li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+</div>
+</form>
+<form th:action="@{/logout}" method="post">
+            <input type="submit" value="注销"/>
+        </form>
+<script th:src="@{jquery-1.10.2.min.js}" type="text/javascript"></script>
+<script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+<script>
+ function search(){
+	 $('#list').submit();
+ }
+</script>
+</body>
+</html>
