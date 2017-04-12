@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,9 +27,11 @@ import com.example.demo.service.DemoService;
 @Controller  
 public class Example {  
 	@Autowired  
-    private UserRepository userRepository; 
+    private UserRepository userRepository;
 	@Autowired  
-    DemoService demoService; 
+    DemoService demoService;
+	@Autowired
+	private UserMapper mapper;
 	//测试提交是否成功
 	// 从 application.properties 中读取配置，如取不到默认值为Hello Shanhy
     @Value("${application.hello:Hello Angel}")
@@ -114,7 +118,8 @@ public class Example {
 	   //String id = (String) arg0.getAttribute("id");
 	   String id = arg0.getParameter("id");
 	   String pageStr = arg0.getParameter("pageStr");
-	   userRepository.delete(id);
+	   //userRepository.delete(id);
+	   mapper.deleteById(id);
 	   Pageable pageable = this.getPageInfo(pageStr);
 	   Object list = userRepository.findAll(pageable);
 	   model.addAttribute("list", list);

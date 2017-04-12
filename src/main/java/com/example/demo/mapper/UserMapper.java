@@ -12,11 +12,11 @@ import java.util.List;
 public interface  UserMapper {
     int save(User user);
 
-    User selectById(Integer id);
+    User selectById(String id);
 
     int updateById(User user);
 
-    int deleteById(Integer id);
+    int deleteById(String id);
 
     List<User> queryAll();
 }
