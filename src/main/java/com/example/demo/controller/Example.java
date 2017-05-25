@@ -119,7 +119,7 @@ public class Example {
 	   String id = arg0.getParameter("id");
 	   String pageStr = arg0.getParameter("pageStr");
 	   //userRepository.delete(id);
-	   mapper.deleteById(id);
+	   mapper.delete(id);
 	   Pageable pageable = this.getPageInfo(pageStr);
 	   Object list = userRepository.findAll(pageable);
 	   model.addAttribute("list", list);

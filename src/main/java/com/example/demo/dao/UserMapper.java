@@ -1,14 +1,12 @@
-package com.example.demo.mapper;
+package com.example.demo.dao;
 
 import com.example.demo.entity.User;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/4/10.
+ * Created by USER on 2017/5/23.
  */
-@Mapper
 public interface UserMapper {
     List<User> getAll();
     User getOne(String id);

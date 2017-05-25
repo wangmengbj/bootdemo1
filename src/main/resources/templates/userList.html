@@ -28,7 +28,7 @@
 				<span th:text="${user.age}"></span>
 				<span th:text="${user.address}"></span>
 				<span th:text="${user.password}"></span>
-				<a th:href="@{/delUser(id=${user.id})}" onclick="" sec:authorize="hasRole('ROLE_ADMIN')">删除</a>
+				<a th:href="@{/delUser(id=${user.id})}" onclick="" >删除</a><!--sec:authorize="hasRole('ROLE_ADMIN')"-->
 				<a th:href="@{/editUser(id=${user.id})}" onclick="">编辑</a>
 			</li>
 		</ul>
