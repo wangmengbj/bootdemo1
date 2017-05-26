@@ -194,4 +194,10 @@ public class Example {
 	   Pageable pageable = new PageRequest(page, pageSize,sort);
 	   return pageable;
    }
+	@RequestMapping("/jsp")
+	@ResponseBody
+	public String Tojsp(){
+
+		return "test";
+	}
 }  
