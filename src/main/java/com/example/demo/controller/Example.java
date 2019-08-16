@@ -200,4 +200,10 @@ public class Example {
 
 		return "test";
 	}
+
+	@RequestMapping("/qrcode")
+	public String qrcode(){
+
+    	return "qrcode";
+	}
 }  
